@@ -1,10 +1,8 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(char *src);
+char	*ft_strdup(const char *src);
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
     size_t i = 0;
     size_t size_src;

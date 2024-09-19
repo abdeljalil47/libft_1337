@@ -1,7 +1,6 @@
-#include <unistd.h>
-#include <stdio.h>
+#include "libft.h"
 
-int ft_atoi(char *str)
+int ft_atoi(const char *str)
 {
     int i = 0;
     int sign = 1;

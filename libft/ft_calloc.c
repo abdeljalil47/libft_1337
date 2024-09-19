@@ -1,8 +1,4 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <strings.h>
-#include <ctype.h>
+#include "libft.h"
 
 void *ft_calloc(size_t nitems, size_t size);
 void ft_bzero(void *s, size_t n);

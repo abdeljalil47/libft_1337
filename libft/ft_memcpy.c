@@ -1,5 +1,4 @@
-#include <unistd.h>
-#include <stdio.h>
+#include "libft.h"
 
 void* ft_memcpy(void* a, const void*  b, size_t n);
 

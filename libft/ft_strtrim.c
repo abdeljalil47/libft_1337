@@ -1,8 +1,7 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
 /*-----
-    static name_function();
+    static typtTheFunction name_function();
     static its help for using this function only in this file
         also if there is another function the same name it not gonna shows
         any errors;
@@ -12,7 +11,6 @@
 -----*/
 
 char *ft_strtrim(char const *s1, char const *set);
-size_t ft_strlen(const char *str);
 int check_set(const char *set, const char c);
 
 int check_set(const char *set, char const c)
@@ -32,7 +30,7 @@ char *ft_strtrim(char const *s1, char const *set)
 {
     char *new;
     size_t size;
-    int i = 0, j = 0;
+    size_t i = 0;
 
     if (!s1 || !set)
         return 0;
@@ -67,20 +65,12 @@ char *ft_strtrim(char const *s1, char const *set)
     new[i] = '\0';
     return new;
 }
-size_t ft_strlen(const char *str)
-{
-    int i = 0;
-    while (str[i] != '\0')
-    {
-        i++;
-    }
-    return (i);
-}
-int main()
-{
-    char *str = "hello, world!";
-    char *set = "he!";
-    char *res = ft_strtrim(str, set);
-    printf("%s", res);
-    return 0;
-}
+
+// int main()
+// {
+//     char *str = "hello, world!";
+//     char *set = "he!";
+//     char *res = ft_strtrim(str, set);
+//     printf("%s", res);
+//     return 0;
+// }
