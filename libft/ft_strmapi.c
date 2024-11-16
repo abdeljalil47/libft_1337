@@ -1,52 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdsebba <abdsebba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/24 23:33:51 by abdsebba          #+#    #+#             */
+/*   Updated: 2024/11/15 14:07:31 by abdsebba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char to_upper(unsigned int i, char c);
-size_t ft_strlen(const char *str);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	size_t	len;
+	size_t	i;
+	char	*place;
 
-/*
-    += site function it change the element from *s by basing it to *f that pointed to function with 
-        parametrs (unsigned int, char)
-*/
-
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char)){
-    size_t len = ft_strlen(s);
-    char *array;
-    size_t i = 0;
-
-    if (s == NULL || f == NULL)
-        return 0;
-    
-    array = (char *)malloc(1 + len * sizeof(char));
-    if (array == NULL)
-        return NULL;
-    while (i < len)
-    {
-        array[i] = f((unsigned int)i, s[i]);
-        i++;
-    }
-    return array;
+	if (s == NULL || f == NULL)
+		return (NULL);
+	len = ft_strlen(s);
+	i = 0;
+	place = (char *)malloc((len + 1) * sizeof(char));
+	if (place == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		place[i] = f((unsigned int)i, s[i]);
+		i++;
+	}
+	place[i] = '\0';
+	return (place);
 }
-
-// size_t ft_strlen(const char *str)
-// {
-//     int i = 0;
-//     while (str[i] != '\0')
-//     {
-//         i++;
-//     }
-//     return (i);
-// }
-// char to_upper(unsigned int i, char c){
-//     if (c >= 'a' && c <= 'z')
-//     {
-//         return c - 32;
-//     }
-//     return c;
-// }
-// int main(){
-//     char str[] = "hello, world!";
-//     char *res = ft_strmapi(str, to_upper);
-//     printf("%s", res);
-//     return 0;
-// } 

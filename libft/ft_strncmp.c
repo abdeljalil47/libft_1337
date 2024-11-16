@@ -1,37 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdsebba <abdsebba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/22 14:46:02 by abdsebba          #+#    #+#             */
+/*   Updated: 2024/11/11 03:06:43 by abdsebba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int ft_strncmp(const char *str1, const char *str2, size_t n);
-
-int ft_strncmp(const char *str1, const char *str2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t length)
 {
-    size_t i = 0;
-    if (n == 0)
-    {
-        return 0;
-    }
-    while (i < n && (str1[i] || str2[i]))
-    {
-        if (str1[i] != str2[i])
-        {
-            return (int )(str1 - str2);
-        }
-        i++;
-    }
-    return 0;
-}
+	size_t	i;
 
-// int main() 
-// {  
-//    char str_1[] = "css";  
-//    char str_2[] = "css";
-//    int i = ft_strncmp(str_1, str_2, strlen(str_2));
-//    if (ft_strncmp(str_1, str_2, strlen(str_2)) == 0)
-//    {  
-//       printf("The strings '%s' and '%s' are equal %d.\n", str_1, str_2, i);  
-//    }  
-//    else 
-//    {  
-//       printf("The strings '%s' and '%s' are not equal %d.\n", str_1, str_2, i);  
-//    }  
-//    return 0;  
-// }  
+	i = 0;
+	if (length == 0)
+		return (0);
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < length - 1)
+	{
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}

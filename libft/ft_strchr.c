@@ -1,30 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdsebba <abdsebba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/22 11:06:24 by abdsebba          #+#    #+#             */
+/*   Updated: 2024/11/14 20:33:16 by abdsebba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char *ft_strchr(const char *str, int search_str);
-
-char *ft_strchr(const char *str, int search_str)
+char	*ft_strchr(const char *s, int c)
 {
-    size_t i = 0;
-    unsigned char c = (unsigned char)search_str;
+	size_t			i;
 
-    if (c == '\0')
-        return (char *)(str);
-    while (str[i] != '\0')
-    {
-        if (str[i] == c)
-        {
-            return (char *)(str + i);
-        }
-        i++;
-    }
-    return NULL;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i++;
+	}
+	if ((char)c == '\0')
+		return ((char *)(s + i));
+	return (NULL);
 }
-
-// int main()
-// {
-//     char str[] = "hello, world";
-//     char c = "";
-//     char *res = ft_strchr(str, c);
-//     printf("%s\n", res);
-//     return 0;
-// }

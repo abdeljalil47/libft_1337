@@ -1,32 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdsebba <abdsebba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/22 11:38:11 by abdsebba          #+#    #+#             */
+/*   Updated: 2024/11/14 00:47:18 by abdsebba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char *ft_strrchr(const char *str, int c);
-char *ft_strrchr(const char *str, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-    unsigned char find = (unsigned char)c;
-    size_t i = 0;
-    while (str[i])
-    {
-        if (str[i] == find)
-        {
-            return (char *)(str + i);
-        }
-        i++;
-    }
-    return NULL;
+	size_t			i;
+	char			*cass;
+
+	i = 0;
+	cass = NULL;
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char)c)
+		{
+			cass = (char *)(s + i);
+		}
+		i++;
+	}
+	if ((char)c == '\0')
+	{
+		return ((char *)(s + i));
+	}
+	return (cass);
 }
-
-// int main() {
-//    const char str[] = "Tutorialspoint";
-//    const char ch = 'n';
-
-//    char* ptr = ft_strrchr(str, ch);
-
-//    if (ptr) {
-//        printf("Last occurrence of '%c' in \"%s\" is at index %ld\n", ch, str, ptr - str);
-//    } else {
-//        printf("'%c' is not present in \"%s\"\n", ch, str);
-//    }
-
-//    return 0;
-// }

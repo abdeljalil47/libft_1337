@@ -1,20 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdsebba <abdsebba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/27 22:30:36 by abdsebba          #+#    #+#             */
+/*   Updated: 2024/10/28 23:54:52 by abdsebba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-// **lst it means to clear all the list, but if *lst mean clear one element.
-
-void ft_lstclear(t_list **lst, void (*del)(void *));
-
-void ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-    if (!*lst || !del)
-        return;
-    t_list *node = *lst;
-    t_list *node_move;
-    while (node)
-    {
-        node_move = node->next;
-        ft_lstdelone(node, del);
-        node = node_move;
-    }
-    *lst = NULL;
+	t_list	*move_node;
+	t_list	*node;
+
+	if (!lst || !del)
+		return ;
+	node = *lst;
+	while (node)
+	{
+		move_node = node->next;
+		ft_lstdelone(node, del);
+		node = move_node;
+	}
+	*lst = NULL;
 }

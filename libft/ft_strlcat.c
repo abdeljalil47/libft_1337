@@ -1,53 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdsebba <abdsebba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/22 09:08:45 by abdsebba          #+#    #+#             */
+/*   Updated: 2024/11/14 09:54:11 by abdsebba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-size_t ft_strlcat(char *dest, const char *src, size_t n);
-
-size_t ft_strlcat(char *dest, const char *src, size_t n)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-    size_t size_dest;
-    size_t size_src;
-    size_t i;
+	size_t	i;
+	size_t	j;
+	size_t	x;
+	size_t	y;
 
-    if (!dest || !src)
-        return (0); // Return 0 if either pointer is NULL
-
-    size_dest = ft_strlen(dest);
-    size_src = ft_strlen(src);
-
-    // If the destination buffer size is zero, return the length of src
-    if (n == 0)
-        return (size_src);
-
-    // If the destination size is larger than or equal to n, return size_src + n
-    if (size_dest >= n)
-        return (size_src + n);
-
-    // Copy characters from src to dest
-    i = 0;
-    while (src[i] && (size_dest + i + 1) < n) // +1 for the null terminator
-    {
-        dest[size_dest + i] = src[i];
-        i++;
-    }
-    
-    // Null-terminate dest
-    dest[size_dest + i] = '\0';
-
-    return (size_dest + size_src);
+	i = 0;
+	j = 0;
+	y = ft_strlen(src);
+	if (!dst && size == 0)
+		return (y);
+	while (dst[j] != '\0')
+	{
+		j++;
+	}
+	x = j;
+	if (size == 0 || size <= x)
+		return (y + size);
+	while (src [i] != '\0' && i < size - x - 1)
+	{
+		dst[j] = src[i];
+		i++;
+		j++;
+	}
+	dst[j] = '\0';
+	return (x + y);
 }
-
-
-// int main()
-// {
-//     int size = 16;
-//     char buffer[] = "This is ";
-//     char last[] = "a potentially long string";
-//     size_t *r;
-
-//     r = ft_strlcat(buffer,last,size);
-
-//     puts(buffer);
-//     printf("Value returned: %d\n",r);
-    
-//     return(0);
-// }

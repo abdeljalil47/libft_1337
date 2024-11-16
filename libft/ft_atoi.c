@@ -1,46 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdsebba <abdsebba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/23 10:04:41 by abdsebba          #+#    #+#             */
+/*   Updated: 2024/11/15 16:12:35 by abdsebba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int ft_atoi(const char *str)
+static int	ft_overflow_s(int sign)
 {
-    int i = 0;
-    int sign = 1;
-    int result = 0;
-
-    while (str[i] == 32 || str[i] == '\t')
-    {
-        i++;
-    }
-    if (str[i] == '-')
-    {
-        sign *= -1;
-        i++;
-    }else
-    {
-        i++;
-    }
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        result = result * 10 + (str[i] - '0');
-        i++;
-    }
-    return sign * result;
+	if (sign == 1)
+		return (-1);
+	else
+		return (0);
 }
 
-// int main(int argc, char const *argv[])
-// {
-//     (void)argc;
-//     int m = 0;
-//     char str[1024];
-//     while (argv[1][m] != '\0')
-//     {
-//         str[m] = argv[1][m];
-//         m++;
-//     }
+int	ft_atoi(const char *str)
+{
+	unsigned long long	result;
+	int					sign;
+	unsigned long long	max;
 
-//     str[m]='\0';
-
-//     int i = ft_atoi(str);
-//     printf("%d\n", i);
-
-//     return 0;
-// }
+	result = 0;
+	sign = 1;
+	max = 9223372036854775807;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str++ == '-')
+			sign = -1;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		if (result > (max - (*str - '0')) / 10)
+			return (ft_overflow_s(sign));
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
+}

@@ -1,30 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdsebba <abdsebba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/23 22:13:01 by abdsebba          #+#    #+#             */
+/*   Updated: 2024/10/30 14:34:45 by abdsebba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char *ft_substr(char const *s, unsigned int start, size_t len);
-
-char *ft_substr(char const *s, unsigned int start, size_t len)
+static void	ft_cpy(const char *s, unsigned int start, char	*array, size_t len)
 {
-    size_t i = 0;
-    char *substring;
-    if (!s)
-        return 0;
-    substring = (char *)malloc(len * sizeof(char *) + 1);
-    if (substring == NULL)
-        return NULL;
-    while (i < len)
-    {
-        substring[i] = s[start + i - 1];
-        i++;
-    }
-    return substring;
+	size_t	j;
+	size_t	i;
+
+	j = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (i >= start && j < len)
+		{
+			array[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	array[j] = '\0';
 }
 
-// int main()
-// {
-//     char string[14] = "geeksforgeeks";
-//     int post = 6;
-//     int len = 5;
-//     char *str = ft_substr(string, post, len);
-//     printf("%s", str);
-//     return 0;
-// }
+char	*ft_substr(const char *s, unsigned int start, size_t len)
+{
+	char	*array;
+
+	if (!s)
+		return (0);
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
+	if (start >= ft_strlen(s))
+	{
+		array = (char *)malloc(sizeof(char));
+		if (array != NULL)
+			array[0] = '\0';
+		return (array);
+	}
+	array = (char *)malloc((len + 1) * sizeof(char));
+	if (array == NULL)
+		return (NULL);
+	ft_cpy(s, start, array, len);
+	return (array);
+}

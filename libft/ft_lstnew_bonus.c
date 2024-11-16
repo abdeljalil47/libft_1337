@@ -1,31 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdsebba <abdsebba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/27 22:13:55 by abdsebba          #+#    #+#             */
+/*   Updated: 2024/10/29 00:02:05 by abdsebba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-/*
-    =- void * it use accepte and pointed any type of data was pasd fron the param.
-    =- struct s_list * is a pointer to another node of the same type, This member is used to link the current node to the next node in the linked list.
-*/
-
-t_list *ft_lstnew(void *content);
-
-t_list *ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
-    t_list *new;
+	t_list	*node;
 
-    new = (t_list *)malloc(sizeof(t_list));
-    if (new)
-    {
-        new->content = content;
-        new->next = NULL;
-    }
-    return new;
+	node = (t_list *)malloc(sizeof(t_list));
+	if (node == NULL)
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }
-
-// int main() {
-//     int data = 42;
-//     t_list *node = ft_lstnew(&data);
-
-//    int *value = (int *)(node->content);
-//    printf("Node content: %d\n", *value);
-        
-//     return 0;
-// }

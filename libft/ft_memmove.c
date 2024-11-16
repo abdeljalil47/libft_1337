@@ -1,43 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdsebba <abdsebba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/22 07:24:44 by abdsebba          #+#    #+#             */
+/*   Updated: 2024/11/15 11:31:09 by abdsebba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void *ft_memmove(void *dest_str, const void *src_str, size_t numBytes);
-
-void *ft_memmove(void *dest_str, const void *src_str, size_t numBytes)
+void	*ft_memmove(void *dst, const void *src, size_t size)
 {
-    size_t i = 0;
-    unsigned char *dest = dest_str;
-    const unsigned char *src = src_str;
+	const char	*sourc;
+	char		*dest;
+	size_t		i;
 
-    if (!dest_str && !src_str)
-    {
-        return NULL;
-    }
-    if (dest > src)
-    {
-        dest += numBytes - 1;
-        src += numBytes - 1;
-        while (i < numBytes)
-        {
-            *dest-- = *src--;
-            i++;
-        }
-    }
-    else
-        while (i < numBytes)
-        {
-            dest[i] = src[i];
-            i++;
-        }
-
-    return dest;
+	sourc = (const char *)src;
+	dest = (char *)dst;
+	i = 0;
+	if ((src == dst) || size == 0)
+		return (dst);
+	if (dest > sourc)
+		while (size-- > 0)
+			dest[size] = sourc[size];
+	else
+	{
+		i = 0;
+		while (i < size)
+		{
+			dest[i] = sourc[i];
+			i++;
+		}
+	}
+	return (dst);
 }
-
-// int main()
-// {
-//     char dest_str[] = "ol";
-//     const char src_str[] = "newstring";
-//     printf("Before memmove dest = %s, src = %s\n", dest_str, src_str);
-//     ft_memmove(dest_str, src_str, 9);
-//     printf("After memmove dest = %s, src = %s\n", dest_str, src_str);
-//     return (0);
-// }

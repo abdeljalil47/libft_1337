@@ -1,38 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdsebba <abdsebba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/24 20:39:29 by abdsebba          #+#    #+#             */
+/*   Updated: 2024/11/15 11:32:22 by abdsebba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void *ft_memchr(const void *str, int c, size_t n);
-
-void *ft_memchr(const void *str, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-    size_t i = 0;
-    const unsigned char *string = str;
-    unsigned char find = (unsigned char)c;
-    while (i < n)
-    {
-        if (string[i] == find)
-        {
-            return (void *)(string + i);
-        }
-        i++;
-    }
-    return (NULL);
+	const unsigned char	*ptr;
+	size_t				i;
+
+	ptr = (const unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		if (ptr[i] == (unsigned char)c)
+		{
+			return ((void *)(ptr + i));
+		}
+		i++;
+	}
+	return (NULL);
 }
-
-// int main(void)
-// {
-//     const char testStr1[] = "Hello, world!";
-//     char searchChar1 = '!';
-//     size_t length1 = strlen(testStr1);
-
-//     // Using ft_memchr
-//     char *result1 = (char *)ft_memchr(testStr1, searchChar1, length1);
-//     if (result1)
-//     {
-//         printf("Found '%c' at position: %ld\n", searchChar1, result1 - testStr1);
-//     }
-//     else
-//     {
-//         printf("Character '%c' not found in the string.\n", searchChar1);
-//     }
-//     return 0;
-// }
